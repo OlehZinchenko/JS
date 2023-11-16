@@ -5,17 +5,30 @@ import logoBg from './logo-background.png';
 const Logo = () =>
     <img src={logo} id="header-logo" alt="Logo"/>
 
+const Item = ({text="Item ", href="#"}) =>
+    <a href={href}>{text}</a>
+
+const Card = ({header = "Lorem ipsum dolor sit amet", bodyTxt = "Lorem ipsum dolor sit amet consectetur adipisicing", btnTxt = "Go"}) =>
+    <div className="card">
+      <div id="card-container">
+        <img src={logoBg} id="card-img"  alt="Card image"/>
+        <h5>{header}</h5>
+        <p id="card-text">{bodyTxt}</p>
+      </div>
+      <button className="card-btn">{btnTxt}</button>
+    </div>
+
 function App() {
   return (
     <div className="App">
       <header className="head-wrapper">
         <Logo />
-         <nav className="nav-wrapper">
-            <a href="#item-1">Item 1</a>
-            <a href="#item-2">Item 2</a>
-            <a href="#item-3">Item 3</a>
-            <a href="#item-4">Item 4</a>
-            <a href="#item-5">Item 5</a>
+        <nav className="nav-wrapper">
+          <Item />
+          <Item />
+          <Item />
+          <Item />
+          <Item />
         </nav>
       </header>
       <div className="content">
@@ -24,54 +37,12 @@ function App() {
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel numquam maxime nam ex placeat accusantium, ut mollitia facere neque blanditiis corrupti harum cupiditate porro, officiis nesciunt quam. Illum, omnis molestias?</p>
           <h3>Our work</h3>
           <div className="card-wrapper">
-            <div className="card">
-              <div id="card-container">
-                <img src={logoBg} id="card-img"  alt="Card image"/>
-                <h5>Lorem ipsum dolor sit amet</h5>
-                <p id="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat doloribus quam nisi?</p>
-              </div>
-              <button className="card-btn">Go</button>
-            </div>
-            <div className="card">
-              <div id="card-container">
-                <img src={logoBg} id="card-img"  alt="Card image"/>
-                <h5>Lorem ipsum dolor sit amet</h5>
-                <p id="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-              </div>
-              <button className="card-btn">Go</button>
-            </div>
-            <div className="card">
-              <div id="card-container">
-                <img src={logoBg} id="card-img"  alt="Card image"/>
-                <h5>Lorem ipsum dolor sit amet</h5>
-                <p id="card-text">Lorem ipsum dolor sit amet </p>
-              </div>
-              <button className="card-btn">Go</button>
-            </div>
-            <div className="card">
-              <div id="card-container">
-                <img src={logoBg} id="card-img"  alt="Card image"/>
-                <h5>Lorem ipsum dolor sit amet</h5>
-                <p id="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, laudantium. Aspernatur ipsam quibusdam doloremque ea.</p>
-              </div>
-              <button className="card-btn">Go</button>
-            </div>
-            <div className="card">
-              <div id="card-container">
-                <img src={logoBg} id="card-img"  alt="Card image"/>
-                <h5>Lorem ipsum dolor sit amet</h5>
-                <p id="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat doloribus quam nisi?</p>
-              </div>
-              <button className="card-btn">Go</button>
-            </div>
-            <div className="card">
-              <div id="card-container">
-                <img src={logoBg} id="card-img"  alt="Card image"/>
-                <h5>Lorem ipsum dolor sit amet</h5>
-                <p id="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus labore, quae natus distinctio cupiditate dicta facere mollitia sequi.</p>
-              </div>
-              <button className="card-btn">Go</button>
-            </div>
+            <Card />
+            <Card bodyTxt="Lorem ipsum dolor sit amet consectetur adipisicing elit." />
+            <Card bodyTxt="Lorem ipsum dolor sit amet." />
+            <Card bodyTxt="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, laudantium. Aspernatur ipsam quibusdam doloremque ea." />
+            <Card bodyTxt="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat doloribus quam nisi" />
+            <Card bodyTxt="Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus labore, quae natus distinctio cupiditate dicta facere mollitia sequi." />
           </div>
         </main>
         <aside className="aside-3">Aside 2</aside>
@@ -82,5 +53,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
