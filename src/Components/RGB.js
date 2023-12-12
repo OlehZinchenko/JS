@@ -2,6 +2,9 @@ import React from "react";
 import {Input} from "./Input";
 import {useState} from "react";
 
+const maxValue = 255
+const minValue = 0
+
 function rgbToHex(r, g, b) {
     return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
 }
@@ -21,15 +24,15 @@ export const RGB = () => {
         <div>
             <div>
                 <span>Please enter RED value: </span>
-                <Input value={red} setValue={setRed}/>
+                <Input value={red} setValue={setRed} min={minValue} max={maxValue}/>
             </div>
             <div>
                 <span>Please enter GREEN value: </span>
-                <Input value={green} setValue={setGreen}/>
+                <Input value={green} setValue={setGreen} min={minValue} max={maxValue}/>
             </div>
             <div>
                 <span>Please enter BLUE value: </span>
-                <Input value={blue} setValue={setBlue}/>
+                <Input value={blue} setValue={setBlue} min={minValue} max={maxValue}/>
             </div>
             <button onClick={Calc}>Calculate</button>
             <div>
