@@ -18,7 +18,7 @@ export const Exchange = () => {
                 <Input value={number1} setValue={setNumber1}/>
             </div>
             <div>
-                <span>Rate is: {rate}$ / 1 UAH</span>
+                <span>Rate is: {rate}UAH / $1 </span>
             </div>
             <button onClick={Calc}>Calculate</button>
             <div>
