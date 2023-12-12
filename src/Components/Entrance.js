@@ -9,7 +9,7 @@ export const Entrance = () => {
     const [result, setResult] = useState(0)
 
     const Calc = () => {
-        setResult((number3-1)%(number1*number2)/number2+1)
+        setResult(Math.floor((number3-1)%(number1*number2)/number2+1))
     }
 
     return (
