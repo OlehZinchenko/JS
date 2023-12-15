@@ -5,18 +5,11 @@ export const Credentials = () => {
     const [firstName, setFirstName] = useState('')
     const [fatherName, setFatherName] = useState('')
     const [surname, setSurname] = useState('')
-    const refactor = () => {
-        setFirstName(firstName.trim())
-        setFatherName(fatherName.trim())
-        setSurname(surname.trim())
-    }
-
     const capital = () => {
         setFirstName(firstName.replace(/^.{1}/g, firstName[0].toUpperCase()))
         setFatherName(fatherName.replace(/^.{1}/g, fatherName[0].toUpperCase()))
         setSurname(surname.replace(/^.{1}/g, surname[0].toUpperCase()))
     }
-
 
     return (
         <div>
