@@ -32,7 +32,7 @@ export const Credentials = () => {
                     <div>Capitalised surname: <strong>{surname}</strong></div>
                 </div>
                 <div>
-                    <span>Your full name is: {firstName+" "+fatherName+" "+surname}</span>
+                    <span><strong>Your full name is:</strong> {firstName+" "+fatherName+" "+surname}</span>
                 </div>
             </div>
         </div>
