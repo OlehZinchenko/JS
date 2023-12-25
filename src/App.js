@@ -8,6 +8,7 @@ import {Gender} from "./Components/Gender";
 import {PromptOr} from "./Components/PromptOr"
 import {Confirm} from "./Components/Confirm"
 import {CurrencyExchange} from "./Components/CurrencyExchange"
+import {Scissors} from "./Components/Scissors"
 
 function App() {
   return (
@@ -26,10 +27,12 @@ function App() {
           {/*<Gender/>*/}
           {/*<h1>Prompt: or</h1>*/}
           {/*<PromptOr/>*/}
-          <h1>Confirm</h1>
-          <Confirm/>
+          {/*<h1>Confirm</h1>*/}
+          {/*<Confirm/>*/}
           {/*<h1>Currency exchange</h1>*/}
           {/*<CurrencyExchange/>*/}
+          <h1>Scissors</h1>
+          <Scissors/>
       </div>
   );
 }

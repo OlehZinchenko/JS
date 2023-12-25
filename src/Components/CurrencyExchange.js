@@ -14,7 +14,22 @@ export const CurrencyExchange = () => {
         setCurrency(currency.toLowerCase())
         setReceive(receive.toLowerCase())
         setAction(action.toLowerCase())
-
+        if (currency === 'usd' && receive === 'eur'){
+            action === 'buy' ? setRate(0.92) : setRate(1.10)
+            setAnswer(amount * rate)
+        }
+        if (currency === 'usd' && receive === 'uah'){
+            action === 'buy' ? setRate(38.5) : setRate(0.41)
+            setAnswer(amount * rate)
+        }
+        if (currency === 'eur' && receive === 'uah'){
+            action === 'buy' ? setRate(39.8) : setRate(0.39)
+            setAnswer(amount * rate)
+        }
+        if (currency === 'uah' && receive === 'eur'){
+            action === 'buy' ? setRate(38.5) : setRate(0.41)
+            setAnswer(amount * rate)
+        }
     }
 
     return (
@@ -38,6 +53,7 @@ export const CurrencyExchange = () => {
                 </div>
                 <div className="currency">
                     <button onClick={Calc}>Calculate</button>
+                    <div>Rate is <strong>{rate}</strong></div>
                     <div>You'll receive <strong>{answer}</strong> in UAH</div>
                 </div>
             </div>

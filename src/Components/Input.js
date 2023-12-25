@@ -1,3 +1,4 @@
+import React from 'react'
 export const Input = (props) => {
     const {value, setValue, type = "string", min="number", max= "number"} = props
 

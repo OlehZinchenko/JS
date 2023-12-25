@@ -26,3 +26,7 @@ h1, div, span, button {
 .currency {
   margin-top: 20px;
 }
+
+strong {
+  margin: 0;
+}
