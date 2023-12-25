@@ -1,9 +1,8 @@
 import React from'react';
-import {Input} from "./Input";
 import {useState} from "react";
 
 export const Scissors = () => {
-    const [yourChoice, setYourChoice] = useState('')
+    const [yourChoice, setYourChoice] = useState('Камень')
     const [computerChoice, setComputerChoice] = useState('')
     const [status, setStatus] = useState('')
 
@@ -40,7 +39,12 @@ export const Scissors = () => {
             <div>
                 <div>
                     <span>Enter your choice:</span><br/>
-                    <Input value={yourChoice} setValue={setYourChoice}/>
+                    {/*<Input value={yourChoice} setValue={setYourChoice}/>*/}
+                    <select value={yourChoice} onChange={e => setYourChoice(e.target.value)}>
+                        <option value="Камень">Камень</option>
+                        <option value="Ножницы">Ножницы</option>
+                        <option value="Бумага">Бумага</option>
+                    </select>
                 </div>
                 <button onClick={Calc}>Set choice</button>
                 <div>
