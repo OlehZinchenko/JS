@@ -6,9 +6,11 @@ export const Scissors = () => {
     const [yourChoice, setYourChoice] = useState('')
     const [computerChoice, setComputerChoice] = useState('')
     const [status, setStatus] = useState('')
+    const [buffer, setBuffer] = useState(0)
 
     const Calc = () => {
-        const buffer = Math.random()
+        setBuffer(Math.random())
+
         if (buffer >= 0.33)
             setComputerChoice('Камень')
         if (buffer <= 0.66 && buffer > 0.33)
@@ -36,14 +38,14 @@ export const Scissors = () => {
             <div>
                 <div>
                     <span>Enter your choice:</span><br/>
-                    <Input value={yourChoice} setValue={setYourChoice()}/>
+                    <Input value={yourChoice} setValue={setYourChoice}/>
                 </div>
                 <button onClick={Calc}>Set choice</button>
                 <div>
-                    <span>Computer choice is: {computerChoice}</span><br/>
+                    <span>Computer choice is: <strong>{computerChoice}</strong></span><br/>
                 </div>
                 <div>
-                    <span>Winner is: {status}</span><br/>
+                    <span>Winner is: <strong>{status}</strong></span><br/>
                 </div>
             </div>
         </div>
