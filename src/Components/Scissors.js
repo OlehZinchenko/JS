@@ -6,30 +6,32 @@ export const Scissors = () => {
     const [yourChoice, setYourChoice] = useState('')
     const [computerChoice, setComputerChoice] = useState('')
     const [status, setStatus] = useState('')
-    const [buffer, setBuffer] = useState(0)
 
     const Calc = () => {
-        setBuffer(Math.random())
+        const buffer = Math.random()
+        let _computerChoice = ''
 
-        if (buffer >= 0.33)
-            setComputerChoice('Камень')
-        if (buffer <= 0.66 && buffer > 0.33)
-            setComputerChoice('Ножницы')
+        if (buffer <= 0.33)
+            _computerChoice = 'Камень'
+        if (buffer > 0.33 && buffer <= 0.66)
+            _computerChoice = 'Ножницы'
         if (buffer > 0.66)
-            setComputerChoice('Бумага')
-        if (yourChoice === computerChoice)
+            _computerChoice = 'Бумага'
+        setComputerChoice(_computerChoice)
+
+        if (yourChoice === _computerChoice)
             setStatus('Ничья')
-        if (yourChoice === "Камень" && computerChoice === "Ножницы")
+        if (yourChoice === "Камень" && _computerChoice === "Ножницы")
             setStatus('Вы')
-        if (yourChoice === "Камень" && computerChoice === "Бумага")
+        if (yourChoice === "Камень" && _computerChoice === "Бумага")
             setStatus('Компьютер')
-        if (yourChoice === "Ножницы" && computerChoice === "Камень")
+        if (yourChoice === "Ножницы" && _computerChoice === "Камень")
             setStatus('Компьютер')
-        if (yourChoice === "Ножницы" && computerChoice === "Бумага")
+        if (yourChoice === "Ножницы" && _computerChoice === "Бумага")
             setStatus('Вы')
-        if (yourChoice === "Бумага" && computerChoice === "Камень")
+        if (yourChoice === "Бумага" && _computerChoice === "Камень")
             setStatus('Вы')
-        if (yourChoice === "Бумага" && computerChoice === "Ножницы")
+        if (yourChoice === "Бумага" && _computerChoice === "Ножницы")
             setStatus('Компьютер')
     }
 
