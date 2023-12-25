@@ -1,0 +1,28 @@
+* {
+  margin-left: 10px;
+}
+
+button, span, h1 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+h1, div, span, button {
+  margin-left: 0;
+}
+
+.usa {
+  margin-top: 20px;
+}
+
+.error-div{
+  color: red;
+}
+
+.success-div {
+  color: green;
+}
+
+.currency {
+  margin-top: 20px;
+}
