@@ -44,3 +44,5 @@ console.log(arraySlice)
 
 //---IndexOf Word---
 answer= prompt("Please, enter a couple of words")
+
+//---Reverse---
