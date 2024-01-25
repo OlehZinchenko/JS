@@ -130,3 +130,103 @@ let answer = prompt("Please, enter a string")
 const [a,,,,b,,,,c] = answer
 console.log(a, b, c)
 
+//---Destruct default---
+let answer = prompt("Please, enter a string")
+const [,a='!',,b='!',c='!'] = answer
+console.log(a, b, c)
+
+//---Destruct default---
+let arr = ["John", "Paul", "George", "Ringo"]
+for (let i of arr) {
+    alert(i)
+}
+
+//---For Select Option---
+const currencies = ["USD", "EUR", "GBP", "UAH"]
+let str = "<select>"
+let option = "";
+for (const currency of currencies){
+    option = "<option>" + currency + "</option>"
+    str+=option
+}
+str+= "</select>"
+document.write(str)
+
+
+//---For Table Horizontal---
+const names = ["John", "Paul", "George", "Ringo"]
+let   str = "<table>"
+let nameItem = "";
+for (const name of names){
+    nameItem = "<td>" + name + "</td>"
+    str+=nameItem
+}
+str+= "</table>"
+document.write(str)
+
+//---For Table Vertical---
+const names = ["John", "Paul", "George", "Ringo"]
+let str = "<table>"
+let nameItem = "";
+for (const name of names){
+    nameItem = "<tr>" + name + "</tr><br/>"
+    str+=nameItem
+}
+str+= "</table>"
+document.write(str)
+
+//---For Table Letters---
+const currencies = ["USD", "EUR", "GBP", "UAH"];
+let str = "<table>";
+let currencyItem = "";
+for (const currency of currencies) {
+    currencyItem = "<tr>";
+    for (const letter of currency) {
+        currencyItem += "<td>" + letter + "</td>";
+    }
+    currencyItem += "</tr>";
+    str += currencyItem + "<br/>";
+}
+str += "</table>";
+document.write(str);
+
+//---For Multiply Table---
+document.head.insertAdjacentHTML("beforeend", `<style>.odd-row{background-color: lightgray;}</style>`)
+
+arr = [0, 1, 2, 3, 4];
+let str = "<table>";
+
+for (const i of arr) {
+    // Use the class 'odd-row' for odd rows
+    const rowClass = i % 2 === 0 ? '' : 'odd-row';
+
+    str += "<tr class='" + rowClass + "'>";
+    for (const j of arr) {
+        str += "<td>" + i * j + "</td>";
+    }
+    str += "</tr>";
+}
+
+str += "</table>";
+document.write(str);
+
+//---Function Capitalize---
+const capitalize = str => {
+    let result = str[0].toUpperCase() + str.slice(1).toLowerCase()
+    return result
+}
+console.log(capitalize("cANBerRa"))
+
+//---Map Capitalize---
+const capitalize = str => {
+    let result = str[0].toUpperCase() + str.slice(1).toLowerCase()
+    return result
+}
+
+let input = prompt("Please, enter a string")
+let array = input.split(" ")
+const capitalisedArr = array.map(capitalize)
+const resultString = capitalisedArr.toString().replace(/,/g, '')
+console.log(resultString)
+
+//---Filter Lexics---
