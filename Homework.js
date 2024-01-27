@@ -230,3 +230,29 @@ const resultString = capitalisedArr.toString().replace(/,/g, '')
 console.log(resultString)
 
 //---Filter Lexics---
+wrongWords = ['shit', 'crap']
+let input = prompt("Please, enter a string")
+let array = input.split(" ")
+console.log(array)
+
+const filterLexics = (array, wrongWords) => {
+    for (let i= 0; i <= array.length; i++){
+        for (let j= 0; j <= wrongWords.length; j++){
+            if (array[i] === wrongWords[j]){
+                array[i] = '*censored*'
+                return false
+            }
+        }
+    }
+}
+filterLexics()
+console.log(array.toString().replace(/,/g, ''))
+
+//---Beep Lexics---
+wrongWords = ['shit', 'crap']
+let input = prompt("Please, enter a string")
+let array = input.split(" ")
+console.log(array)
+
+array.some(w => wrongWords.includes(w)) === true && console.log('BEEP')
+
