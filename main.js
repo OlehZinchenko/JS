@@ -305,3 +305,123 @@ console.log(name1, name2);
 let arr = [1,2,3,4, 5,6,7,10]
 const {0: a, 1: b, length} = arr
 console.log(a, b, length)
+
+//---Copy delete---
+const keyName = prompt('Введіть потрібний ключ')
+const pc2 = {...pc}
+pc2[keyName] = prompt('Введіть значення для ключа')
+console.log(pc2)
+
+const {[keyName]:value,...pc3} = pc2
+console.log(pc3)
+
+//---Currency real rate---
+const inputCurrency = prompt('Введіть вхідну валюту').toUpperCase()
+const outputCurrency = prompt('Введіть валюту, в яку потрібно перевести').toUpperCase()
+const amount = prompt('Введіть суму')
+const data = fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
+    .then(data => {
+        if (!(data.rates[outputCurrency] in data.rates)) {
+            console.log('Валюта не підтримується')
+            return
+        }
+        if (!(data.rates[inputCurrency] in data.rates)) {
+            console.log('Валюта не підтримується')
+            return
+        }
+        if (isNaN(amount) || amount === ''){
+            alert('Введіть суму обміну')
+            return
+        }
+        console.log(data)
+        const result = (data.rates[outputCurrency] / data.rates[inputCurrency]) * amount
+        console.log("You'll receive:" + result)
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+//---Currency drop down---
+const select           = document.createElement('select')
+document.body.append(select)
+fetch('https://open.er-api.com/v6/latest/USD').then(res => res.json())
+    .then(data => {
+        for (let key in data.rates) {
+            const option = document.createElement('option')
+            option.value = key
+            option.innerText = key
+            select.append(option)
+        }
+    })
+
+//---Currency table---
+fetch('https://open.er-api.com/v6/latest/USD')
+    .then(res => res.json())
+    .then(data => {
+        const table = document.createElement('table')
+        document.body.append(table)
+
+        const currencies = ['USD', 'EUR', 'UAH', 'PLN']
+
+        const thead = document.createElement('thead')
+        const headerRow = document.createElement('tr')
+        thead.appendChild(headerRow)
+        table.appendChild(thead)
+
+        headerRow.appendChild(document.createElement('th'))
+
+        currencies.forEach(currency => {
+            const th = document.createElement('th')
+            th.innerText = currency
+            headerRow.appendChild(th)
+        });
+
+        const tbody = document.createElement('tbody')
+        table.appendChild(tbody)
+
+        currencies.forEach(fromCurrency => {
+            const tr = document.createElement('tr')
+            tbody.appendChild(tr)
+
+            const th = document.createElement('th')
+            th.innerText = fromCurrency
+            tr.appendChild(th)
+
+            currencies.forEach(toCurrency => {
+                const td = document.createElement('td')
+                td.innerText = (data.rates[toCurrency] / data.rates[fromCurrency]).toFixed(2)
+                tr.appendChild(td)
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error)
+    });
+
+//---Form---
+const car = {
+    "Name":"chevrolet chevelle malibu",
+    "Cylinders":8,
+    "Displacement":307,
+    "Horsepower":130,
+    "Weight_in_lbs":3504,
+    "Origin":"USA",
+    "in_production": false
+}
+
+const form = document.createElement('form');
+
+for (let key in car) {
+    const label = document.createElement('label')
+    label.innerText = key
+    form.appendChild(label)
+
+    const input = document.createElement('input')
+    input.name = key
+    input.value = car[key]
+    form.appendChild(input)
+
+    form.appendChild(document.createElement('br'))
+}
+
+document.body.appendChild(form)
