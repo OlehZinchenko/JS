@@ -151,3 +151,117 @@ button.addEventListener('click', () => {
     const result = multilineString(inputString.value);
     alert(result);
 })
+
+//---Prompt OR---
+    let age;
+    (function ageFunc(age='default value') {
+        age = prompt('Enter your age');
+        if (age === null || age === '') {
+            return age;
+        }
+        alert(age);
+    })();
+
+//---Login And Password---
+const login = 'admin';
+const password = 'qwerty';
+
+const loginFunc = (login, password) => {
+    const userLogin = prompt('Enter your login');
+    const userPassword = prompt('Enter your password');
+    if (userLogin === login && userPassword === password) {
+        alert('Welcome');
+    }
+    else {
+        alert('Wrong login or password');
+    }
+}
+
+loginFunc(login, password)
+
+//---For Table---
+document.head.insertAdjacentHTML("beforeend", `<style>.odd-row{background-color: lightgray;}</style>`)
+
+array = [0, 1, 2, 3, 4];
+
+const table = (arr) => {
+    let str = "<table>";
+
+    for (const i of arr) {
+        // Use the class 'odd-row' for odd rows
+        const rowClass = i % 2 === 0 ? '' : 'odd-row';
+
+        str += "<tr class='" + rowClass + "'>";
+        for (const j of arr) {
+            str += "<td>" + i * j + "</td>";
+        }
+        str += "</tr>";
+    }
+
+    str += "</table>";
+    document.write(str);
+}
+
+table(array)
+
+//---Filter Lexics---
+const filterWords = ['бляха', 'муха', "пляшка", "шабля"]
+const input = prompt("Please, enter a string")
+
+const filterLexics = (input, filterWords) => {
+    const arr = input.split(" ");
+    const filteredArr = arr.filter(word => !filterWords.includes(word));
+    return filteredArr.join(" ");
+}
+
+alert(filterLexics(input, filterWords))
+
+//---Currency Table---
+fetch('https://open.er-api.com/v6/latest/USD')
+    .then(res => res.json())
+    .then(data => {
+        const doubleArr = [];
+        for (const key in data.rates) {
+            doubleArr.push([key, data.rates[key]]);
+        }
+        console.log(doubleArr);
+
+        const table = document.createElement('table')
+        document.body.append(table)
+
+        const currencies = ['USD', 'EUR', 'UAH', 'PLN']
+
+        const thead = document.createElement('thead')
+        const headerRow = document.createElement('tr')
+        thead.appendChild(headerRow)
+        table.appendChild(thead)
+
+        headerRow.appendChild(document.createElement('th'))
+
+        currencies.forEach(currency => {
+            const th = document.createElement('th')
+            th.innerText = currency
+            headerRow.appendChild(th)
+        });
+
+        const tbody = document.createElement('tbody')
+        table.appendChild(tbody)
+
+        currencies.forEach(fromCurrency => {
+            const tr = document.createElement('tr')
+            tbody.appendChild(tr)
+
+            const th = document.createElement('th')
+            th.innerText = fromCurrency
+            tr.appendChild(th)
+
+            currencies.forEach(toCurrency => {
+                const td = document.createElement('td')
+                td.innerText = (data.rates[toCurrency] / data.rates[fromCurrency]).toFixed(2)
+                tr.appendChild(td)
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error)
+    });
