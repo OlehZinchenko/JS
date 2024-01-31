@@ -425,3 +425,73 @@ for (let key in car) {
 }
 
 document.body.appendChild(form)
+
+//---Table---
+const arr = [
+    {
+        "Name":"chevrolet chevelle malibu",
+        "Cylinders":8,
+        "Displacement":307,
+        "Horsepower":130,
+        "Weight_in_lbs":3504,
+        "Origin":"USA"
+    },
+        {
+            "Name":"buick skylark 320",
+            "Miles_per_Gallon":15,
+            "Cylinders":8,
+            "Displacement":350,
+            "Horsepower":165,
+            "Weight_in_lbs":3693,
+            "Acceleration":11.5,
+            "Year":"1970-01-01",
+        },
+        {
+            "Miles_per_Gallon":18,
+            "Cylinders":8,
+            "Displacement":318,
+            "Horsepower":150,
+            "Weight_in_lbs":3436,
+            "Year":"1970-01-01",
+            "Origin":"USA"
+        },
+        {
+            "Name":"amc rebel sst",
+            "Miles_per_Gallon":16,
+            "Cylinders":8,
+            "Displacement":304,
+            "Horsepower":150,
+            "Year":"1970-01-01",
+            "Origin":"USA"
+        },
+    ]
+
+function displayTable(arr) {
+    const table = document.createElement('table');
+
+    const thead = document.createElement('thead')
+    const headerRow = document.createElement('tr')
+    for (let key in arr[0]) {
+        const th = document.createElement('th')
+        th.textContent = key
+        headerRow.appendChild(th)
+    }
+    thead.appendChild(headerRow)
+    table.appendChild(thead)
+
+    const tbody = document.createElement('tbody')
+    for (let obj of arr) {
+        const row = document.createElement('tr')
+        for (let key in obj) {
+            const td = document.createElement('td')
+            td.textContent = obj[key]
+            row.appendChild(td)
+        }
+        tbody.appendChild(row)
+    }
+    table.appendChild(tbody)
+
+    document.body.appendChild(table)
+}
+
+displayTable(arr)
