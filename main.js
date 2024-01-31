@@ -265,3 +265,167 @@ fetch('https://open.er-api.com/v6/latest/USD')
     .catch(error => {
         console.error('Error:', error)
     });
+
+//---Form---
+function createFormFromObject(obj) {
+    const form = document.createElement('form')
+
+    for (const key in obj) {
+        const label = document.createElement('label')
+        label.textContent = key;
+
+        const input = document.createElement('input')
+        input.value = obj[key]
+
+        form.appendChild(label)
+        form.appendChild(input);
+
+        br = document.createElement("span")
+        br.innerHTML = "<br/>"
+        document.body.appendChild(br)
+    }
+
+    return form
+}
+
+const obj = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    age: 30
+};
+
+const form = createFormFromObject(obj)
+document.body.appendChild(form)
+
+//---Array of objects sort---
+var persons = [
+    {name: "Іван", age: 17},
+    {name: "Марія", age: 35},
+    {name: "Олексій", age: 73},
+    {name: "Яків", age: 12},
+]
+
+const sort = (persons, field, flag = true) => {
+    if (flag) {
+        console.log(persons.sort((a, b) => a[field] - b[field]));
+    } else {
+        console.log((persons.sort((a, b) => b[field] - a[field])));
+
+    }
+}
+//sort(persons, "age"); //сортує за віком за зростанням
+sort(persons, "name", false); //сортує на ім'я за спаданням
+
+//---Table---
+const cars = [
+    {
+        "Name":"chevrolet chevelle malibu",
+        "Cylinders":8,
+        "Displacement":307,
+        "Horsepower":130,
+        "Weight_in_lbs":3504,
+        "Origin":"USA"
+    },
+    {
+        "Name":"buick skylark 320",
+        "Miles_per_Gallon":15,
+        "Cylinders":8,
+        "Displacement":350,
+        "Horsepower":165,
+        "Weight_in_lbs":3693,
+        "Acceleration":11.5,
+        "Year":"1970-01-01",
+    },
+    {
+        "Miles_per_Gallon":18,
+        "Cylinders":8,
+        "Displacement":318,
+        "Horsepower":150,
+        "Weight_in_lbs":3436,
+        "Year":"1970-01-01",
+        "Origin":"USA"
+    },
+    {
+        "Name":"amc rebel sst",
+        "Miles_per_Gallon":16,
+        "Cylinders":8,
+        "Displacement":304,
+        "Horsepower":150,
+        "Year":"1970-01-01",
+        "Origin":"USA"
+    },
+]
+
+function displayTable(cars, field, flag) {
+    const carsCopy = cars.slice(0)
+
+    if (flag) {
+        carsCopy.sort((a, b) => a[field] - b[field]);
+    } else {
+        (carsCopy.sort((a, b) => b[field] - a[field]));
+
+    }
+
+    const table = document.createElement('table');
+
+    const thead = document.createElement('thead')
+    const headerRow = document.createElement('tr')
+    for (let key in carsCopy[0]) {
+        const th = document.createElement('th')
+        th.textContent = key
+        headerRow.appendChild(th)
+    }
+    thead.appendChild(headerRow)
+    table.appendChild(thead)
+
+    const tbody = document.createElement('tbody')
+    for (let obj of carsCopy) {
+        const row = document.createElement('tr')
+        for (let key in obj) {
+            const td = document.createElement('td')
+            td.textContent = obj[key]
+            row.appendChild(td)
+        }
+        tbody.appendChild(row)
+    }
+    table.appendChild(tbody)
+
+    document.body.appendChild(table)
+}
+
+displayTable(cars, "name", false)
+
+//---Divide---
+const firstInput = document.createElement('input');
+firstInput.type = 'number';
+firstInput.id = 'firstNumber';
+
+document.body.appendChild(firstInput);
+
+const secondInput = document.createElement('input');
+secondInput.type = 'number';
+secondInput.id = 'secondNumber';
+
+document.body.appendChild(secondInput);
+
+const divElement = document.createElement('div');
+divElement.id = 'divisionResult';
+divElement.textContent = 'текст у div';
+
+document.body.appendChild(divElement);
+
+const calcResult = () => {
+    const firstNumber = document.getElementById('firstNumber');
+    const secondNumber = document.getElementById('secondNumber');
+    const divisionResult = document.getElementById('divisionResult');
+
+    if (secondNumber.value === 0) {
+        divisionResult.innerHTML = "Error: Division by zero is not allowed.";
+    } else {
+        divisionResult.innerHTML = "Результат подiлу нацiло: " + Math.floor(firstNumber.value / secondNumber.value);
+    }
+}
+
+firstInput.oninput = secondInput.oninput = calcResult
+
+
