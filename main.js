@@ -75,7 +75,23 @@ function checkResult(original, validator){
     return wrapper
 }
 
-
 //numberPrompt - це функція, яка буде запускати prompt до тих пір, поки користувач не введе число
 const numberPrompt = checkResult(prompt, x => !isNaN(+x))
 let   number = +numberPrompt("Введіть число", "0")  //параметри передаються наскрізь до оригіналу. Не забудьте передати this, використовуючи call або apply
+
+const randomHigh = checkResult(Math.random, x => x > 0.5)
+const alwaysSayYes = checkResult(prompt, x => x !== null)
+
+const credentials = () => {
+    const firstName = prompt('Enter first name')
+    const surname = prompt('Enter surname')
+    const fatherName = prompt('Enter father name')
+    const fullName = firstName + ' ' + surname + ' ' + fatherName
+    return {
+        name : firstName,
+        surname : surname,
+        fatherName : fatherName,
+        fullName : fullName
+    }
+}
+const respectMe = checkResult(credentials, x => x.name || x.surname || x.fatherName)
