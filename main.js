@@ -52,11 +52,10 @@ alert(`Привіт ${nameSaver()}. Щойно запустився prompt, пе
 alert(`Слухай, ${nameSaver()}, го пити пиво. Адже prompt був лише один раз`)
 
 //---myBind---
-function myBind(func, context, ...defaultArgs) {
-    return function (...args) {
-        const combinedArgs = defaultArgs.concat(args);
-        return func.apply(context, combinedArgs);
-    };
+function myBind(func, context, ...args) {
+  return function(...rest) {
+    return func.call(context, ...args, ...rest)
+  }
 }
 
 let pow5 = myBind(Math.pow, Math, [, 5])
@@ -64,4 +63,19 @@ const bindedJoiner = myBind((...params) => params.join(''), null, [, 'b', , , 'e
 bindedJoiner('a','c','d') === 'abcdef'
 bindedJoiner('1','2','3') === '1b23ef'
 
-//---
+//---checkResult---
+function checkResult(original, validator){
+    function wrapper(...params){
+        let result;
+        do {
+            result = original(...params)
+        } while (!validator(result))
+        return result
+    }
+    return wrapper
+}
+
+
+//numberPrompt - це функція, яка буде запускати prompt до тих пір, поки користувач не введе число
+const numberPrompt = checkResult(prompt, x => !isNaN(+x))
+let   number = +numberPrompt("Введіть число", "0")  //параметри передаються наскрізь до оригіналу. Не забудьте передати this, використовуючи call або apply
